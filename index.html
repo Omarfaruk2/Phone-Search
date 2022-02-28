@@ -5,11 +5,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mobile Official Site</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Poppins:wght@400;500;600;700&family=Qwitcher+Grypen:wght@700&display=swap"
+        rel="stylesheet">
+    <!-- bootstrop link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
-<body>
-    <h2>Hello world</h2>
+<body class="bg-light">
+    <div class="container">
+        <h2 class="text-center mt-3">Mobile Official Site </h2>
+        <div class="input-group w-50 mb-3 mx-auto">
+            <input id="search-input" type="text" class="form-control" placeholder="Search" aria-label="Search"
+                aria-describedby="basic-addon2" min="0">
+            <div class="input-group-append">
+                <span onclick="loadMobile()" class="input-group-text" id="search-btn">Search</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- details file -->
+    <div class="container">
+        <div class="row" id="details-mobile">
+
+
+
+            <!-- <div class="card mx-auto" style="width: 40rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">Card title</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- -------container------- -->
+    <div class="container mt-4">
+        <div id="card-parent" class="row">
+            <!-- 
+            <div class="col-lg-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div> -->
+
+
+
+
+
+        </div>
+    </div>
+
+    <!-- -----------javascript link--------------- -->
+    <script src="app.js"></script>
 </body>
 
 </html>
