@@ -8,7 +8,7 @@ const loadMobile = () => {
     if (inputValue == '') {
         console.log("hello")
         document.getElementById("eror").innerHTML = `
-        <h4 class="text-danger">Please write search a Mobile or Tab or a valid input !!!</h4>
+        <h3 class="text-danger">Please write search a Mobile or Tab Name or a valid input !!!</h3>
         `
     }
     else {
@@ -45,12 +45,12 @@ const displayMobile = (phones) => {
         div.classList.add('mx-auto')
         div.innerHTML = `
         <div class="col-lg-4">
-            <div class="card px-4 pt-3 mb-4" style="width: 18rem;">
+            <div class="card px-4 pt-3 mb-4 check-border shadow-lg" style="width: 21rem;">
                 <img class="card-img-top w-75 b-0 mx-auto" src="${phone.image}" alt="Card image cap">
                 <div class="card-body w-100">
                     <h6 class="card-title">Mobile: ${phone.phone_name}</h6>
                     <h6 class="card-title">Divice: ${phone.brand}</h6>
-                    <a href="#" onclick="loadDetails('${phone.slug}')" class="btn btn-primary ms-5">Details</a>
+                    <a href="#" onclick="loadDetails('${phone.slug}')" class="btn btn-primary px-4 ms-5">Details</a>
                 </div>
             </div>
         </div>
@@ -69,10 +69,11 @@ const loadDetails = (id) => {
 }
 
 const setDetails = (info) => {
-    console.log(info.releaseDate)
+    console.log(info)
+    console.log(info.others.WLAN)
     // console.log(${info.name})
     const parent = document.getElementById("details-mobile")
-    if (info.releaseDate === '') {
+    if (info.releaseDate === '' || info.others.WLAN === "") {
         console.log("Hello amar jan")
         parent.innerHTML = `
         <div class="card mx-auto" style="width: 45rem;">
@@ -90,8 +91,7 @@ const setDetails = (info) => {
                 <li class="list-group-item bg-light">Memory: ${info.mainFeatures.memory}</li>
                 <h5 class="list-group-item fw-bold">Sensors: ${info.mainFeatures.sensors}</h5>         
                 <li class="list-group-item bg-light">Brand: ${info.brand}</li>
-                <h5 class="list-group-item">Other Features:</h5> 
-                <li class="list-group-item bg-light">WLAN: ${info.others.WLAN}</li>
+                <h5 class="list-group-item">Other Features:</h5>
                 <li class="list-group-item ">Bluetooth: ${info.others.Bluetooth}</li>
                 <li class="list-group-item bg-light">GPS: ${info.others.GPS}</li>
                 <li class="list-group-item ">NFC: ${info.others.NFC}</li>
@@ -107,7 +107,7 @@ const setDetails = (info) => {
             <h3 class="card-title text-center mt-3">Brand New ${info.name}</h3>
             <img src="${info.image}" class="card-img-top w-50 mx-auto" alt="...">
             <div class="card-body">
-                <h4 class="card-title fw-bold">Full Specifications Of ${info.name} </h4>
+                <h4 class="card-title fw-bold fw-bold">Full Specifications Of ${info.name} </h4>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ReleaseDate :${info.releaseDate}</li>
@@ -119,7 +119,6 @@ const setDetails = (info) => {
                 <h5 class="list-group-item fw-bold">Sensors: ${info.mainFeatures.sensors}</h5>         
                 <li class="list-group-item bg-light">Brand: ${info.brand}</li>
                 <h5 class="list-group-item">Other Features:</h5> 
-                <li class="list-group-item bg-light">WLAN: ${info.others.WLAN}</li>
                 <li class="list-group-item ">Bluetooth: ${info.others.Bluetooth}</li>
                 <li class="list-group-item bg-light">GPS: ${info.others.GPS}</li>
                 <li class="list-group-item ">NFC: ${info.others.NFC}</li>
