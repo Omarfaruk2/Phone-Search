@@ -26,7 +26,7 @@ const loadMobile = () => {
                 }
                 else {
                     document.getElementById("eror").innerHTML = `
-                    <h4 class="text-danger mt-4">Sorry sir!! Your input in invalid.Input a valid name.</h4>
+                    <h4 class="text-danger mt-4">Sorry sir!!! Your input in invalid.Input a valid name.</h4>
                     `
                 }
             })
