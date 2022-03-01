@@ -6,7 +6,7 @@ const loadMobile = () => {
     const inputValue = document.getElementById("search-input").value
 
     if (inputValue === '') {
-        console.log("hello")
+        // console.log("hello")
         document.getElementById("eror").innerHTML = `
         <h3 class="text-danger mt-4">Please write a Mobile or Tab Name or a valid input for search deatils !!!</h3>
         `
@@ -55,8 +55,8 @@ const displayMobile = (phones) => {
 }
 
 const loadDetails = (id) => {
-    console.log(id)
-    console.log(id)
+    // console.log(id)
+    // console.log(id)
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
     fetch(url)
         .then(res => res.json())
@@ -67,10 +67,37 @@ const setDetails = (info) => {
     const parent = document.getElementById("details-mobile")
     // console.log(info.others)
     // console.log(${info.name})
-    if (info.others = null) {
-        console.log("hello")
+    // console.log(info.others)
+    if (info.others == undefined) {
+        parent.innerHTML = `
+        <div class="card mx-auto" style="width: 45rem;">
+            <h3 class="card-title text-center mt-3">Brand New ${info.name}</h3>
+            <img src="${info.image}" class="card-img-top w-50 mx-auto" alt="...">
+            <div class="card-body">
+                <h4 class="card-title fw-bold fw-bold">Full Specifications Of ${info.name} </h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ReleaseDate :${info.releaseDate}</li>
+                <h5 class="list-group-item bg-light">MainFeatures :</h5>
+                <li class="list-group-item">Storage: ${info.mainFeatures.storage}</li>
+                <li class="list-group-item bg-light">DisplaySize: ${info.mainFeatures.displaySize}</li>
+                <li class="list-group-item">ChipSet: ${info.mainFeatures.chipSet}</li>
+                <li class="list-group-item bg-light">Memory: ${info.mainFeatures.memory}</li>
+                <h5 class="list-group-item fw-bold">Sensors: ${info.mainFeatures.sensors}</h5>         
+                <li class="list-group-item bg-light">Brand: ${info.brand}</li>
+                <h5 class="list-group-item">Other Features:</h5>
+
+                <li class="list-group-item ">Bluetooth: Not Avilable</li>
+                <li class="list-group-item bg-light">GPS: Not Avilable</li>
+                <li class="list-group-item ">NFC: Not Avilable</li>
+                <li class="list-group-item bg-light">Radio: Not Avilable</li>
+                <li class="list-group-item ">USB: Not Avilable</li>
+               
+            </ul>
+        </div>
+    `
     }
-    if (info.releaseDate === '') {
+    else if (info.releaseDate === '') {
         parent.innerHTML = `
         <div class="card mx-auto" style="width: 45rem;">
             <h3 class="card-title text-center mt-3">Brand New ${info.name}</h3>
@@ -124,6 +151,7 @@ const setDetails = (info) => {
         </div>
     `
     }
+    // console.log(info.others)
 }
 
 
