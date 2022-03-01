@@ -1,5 +1,7 @@
 
 const loadMobile = () => {
+    document.getElementById("card-parent").innerHTML = ''
+    document.getElementById("details-mobile").innerHTML = ''
     const inputValue = document.getElementById("search-input").value
 
     const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue}`
@@ -29,6 +31,7 @@ const displayMobile = (phones) => {
         </div>
         `
         parent.appendChild(div)
+
     });
 }
 
@@ -42,19 +45,32 @@ const loadDetails = (id) => {
 
 const setDetails = (info) => {
     console.log(info)
+    // console.log(${info.name})
+    console.log('${info.mainFeatures.releaseDate}')
     const parent = document.getElementById("details-mobile")
     parent.innerHTML = `
-    <div class="card mx-auto" style="width: 35rem;">
+    <div class="card mx-auto" style="width: 45rem;">
         <h3 class="card-title text-center mt-3">Brand New ${info.name}</h3>
         <img src="${info.image}" class="card-img-top w-50 mx-auto" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h5 class="card-title">Card title</h5>
+            <h4 class="card-title fw-bold">Full Specifications Of ${info.name} </h4>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item bg-dark">A third item</li>
+            <li class="list-group-item">ReleaseDate :${info.releaseDate}</li>
+            <h5 class="list-group-item bg-light">MainFeatures :</h5>
+            <li class="list-group-item">Storage: ${info.mainFeatures.storage}</li>
+            <li class="list-group-item bg-light">DisplaySize: ${info.mainFeatures.displaySize}</li>
+            <li class="list-group-item">ChipSet: ${info.mainFeatures.chipSet}</li>
+            <li class="list-group-item bg-light">Memory: ${info.mainFeatures.memory}</li>
+            <h5 class="list-group-item fw-bold">Sensors: ${info.mainFeatures.sensors}</h5>         
+            <li class="list-group-item bg-light">Brand: ${info.brand}</li>
+            <h5 class="list-group-item">Other Features:</h5> 
+            <li class="list-group-item bg-light">WLAN: ${info.others.WLAN}</li>
+            <li class="list-group-item ">Bluetooth: ${info.others.Bluetooth}</li>
+            <li class="list-group-item bg-light">GPS: ${info.others.GPS}</li>
+            <li class="list-group-item ">NFC: ${info.others.NFC}</li>
+            <li class="list-group-item bg-light">Radio: ${info.others.Radio}</li>
+            <li class="list-group-item ">USB: ${info.others.USB}</li>
         </ul>
     </div>
 `
