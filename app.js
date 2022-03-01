@@ -5,10 +5,10 @@ const loadMobile = () => {
     document.getElementById("details-mobile").innerHTML = ''
     const inputValue = document.getElementById("search-input").value
 
-    if (inputValue == '') {
+    if (inputValue === '') {
         console.log("hello")
         document.getElementById("eror").innerHTML = `
-        <h3 class="text-danger">Please write search a Mobile or Tab Name or a valid input !!!</h3>
+        <h3 class="text-danger mt-4">Please write a Mobile or Tab Name or a valid input for search deatils !!!</h3>
         `
     }
     else {
@@ -18,29 +18,24 @@ const loadMobile = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log(data.data)
-                if (inputValue.toLowerCase() == 'nova' || inputValue.toLowerCase() == 'samsung'
-                    || inputValue.toLowerCase() == 'iphone' || inputValue.toLowerCase() == 'tab') {
-                    console.log(data.data.length)
-                    displayMobile((data.data).slice(0, 20))
+                if (inputValue.toLowerCase() === 'nova' || inputValue.toLowerCase() === 'samsung'
+                    || inputValue.toLowerCase() === 'iphone' || inputValue.toLowerCase() === 'tab' || inputValue.toLowerCase() === 'oppo' || inputValue.toLowerCase() === '10') {
+                    // console.log(data.data.length)
+                    displayMobile((data.data).slice(0, 21))
 
                 }
                 else {
                     document.getElementById("eror").innerHTML = `
-                    <h4 class="text-danger">Please write search a Mobile or Tab or a valid input ami parvo !!!</h4>
+                    <h4 class="text-danger mt-4">Sorry sir!! Your input in invalid. Input a valid name</h4>
                     `
                 }
             })
-
     }
-    // console.log(inputValue)
 }
-
 const displayMobile = (phones) => {
-    // console.log(phones)
+    document.getElementById("search-input").value = '';
     const parent = document.getElementById("card-parent")
     phones.forEach(phone => {
-        // console.log(phone)
-        // console.log(phone.)
         const div = document.createElement("div")
         div.classList.add('mx-auto')
         div.innerHTML = `
@@ -48,15 +43,14 @@ const displayMobile = (phones) => {
             <div class="card px-4 pt-3 mb-4 check-border shadow-lg" style="width: 21rem;">
                 <img class="card-img-top w-75 b-0 mx-auto" src="${phone.image}" alt="Card image cap">
                 <div class="card-body w-100">
-                    <h6 class="card-title">Mobile: ${phone.phone_name}</h6>
-                    <h6 class="card-title">Divice: ${phone.brand}</h6>
+                    <h6 class="card-title text-center">Mobile: ${phone.phone_name}</h6>
+                    <h6 class="card-title text-center">Divice: ${phone.brand}</h6>
                     <a href="#" onclick="loadDetails('${phone.slug}')" class="btn btn-primary px-4 ms-5">Details</a>
                 </div>
             </div>
         </div>
         `
         parent.appendChild(div)
-
     });
 }
 
@@ -69,12 +63,13 @@ const loadDetails = (id) => {
 }
 
 const setDetails = (info) => {
-    console.log(info)
-    console.log(info.others.WLAN)
-    // console.log(${info.name})
     const parent = document.getElementById("details-mobile")
-    if (info.releaseDate === '' || info.others.WLAN === "") {
-        console.log("Hello amar jan")
+    // console.log(info.others)
+    // console.log(${info.name})
+    if (info.others = null) {
+        console.log("hello")
+    }
+    if (info.releaseDate === '') {
         parent.innerHTML = `
         <div class="card mx-auto" style="width: 45rem;">
             <h3 class="card-title text-center mt-3">Brand New ${info.name}</h3>
@@ -128,9 +123,6 @@ const setDetails = (info) => {
         </div>
     `
     }
-
-
-
 }
 
 
