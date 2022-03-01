@@ -26,7 +26,7 @@ const loadMobile = () => {
                 }
                 else {
                     document.getElementById("eror").innerHTML = `
-                    <h4 class="text-danger mt-4">Sorry sir!! Your input in invalid. Input a valid name</h4>
+                    <h4 class="text-danger mt-4">Sorry sir!! Your input in invalid.Input a valid name.</h4>
                     `
                 }
             })
@@ -55,7 +55,8 @@ const displayMobile = (phones) => {
 }
 
 const loadDetails = (id) => {
-    // console.log(id)
+    console.log(id)
+    console.log(id)
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
     fetch(url)
         .then(res => res.json())
