@@ -1,4 +1,5 @@
 
+//----------- loaddata-----------
 const loadMobile = () => {
     document.getElementById("eror").innerHTML = ''
     document.getElementById("card-parent").innerHTML = ''
@@ -18,11 +19,10 @@ const loadMobile = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log(data.data)
-                if (inputValue.toLowerCase() === 'nova' || inputValue.toLowerCase() === 'samsung'
+                if (inputValue.toLowerCase() === 'nova' || inputValue.toLowerCase() === 'huawei' || inputValue.toLowerCase() === 'samsung'
                     || inputValue.toLowerCase() === 'iphone' || inputValue.toLowerCase() === 'tab' || inputValue.toLowerCase() === 'oppo' || inputValue.toLowerCase() === '10') {
                     // console.log(data.data.length)
                     displayMobile((data.data).slice(0, 21))
-
                 }
                 else {
                     document.getElementById("eror").innerHTML = `
@@ -32,6 +32,8 @@ const loadMobile = () => {
             })
     }
 }
+
+// -------displaly data-------------
 const displayMobile = (phones) => {
     document.getElementById("search-input").value = '';
     const parent = document.getElementById("card-parent")
@@ -53,7 +55,7 @@ const displayMobile = (phones) => {
         parent.appendChild(div)
     });
 }
-
+//--------------------- --------search by name-----------------------------------------
 const loadDetails = (id) => {
     // console.log(id)
     // console.log(id)
@@ -62,12 +64,9 @@ const loadDetails = (id) => {
         .then(res => res.json())
         .then(data => setDetails(data.data))
 }
-
+// -------------------innerHTML for details-----------------------
 const setDetails = (info) => {
     const parent = document.getElementById("details-mobile")
-    // console.log(info.others)
-    // console.log(${info.name})
-    // console.log(info.others)
     if (info.others == undefined) {
         parent.innerHTML = `
         <div class="card mx-auto" style="width: 45rem;">
@@ -77,22 +76,20 @@ const setDetails = (info) => {
                 <h4 class="card-title fw-bold fw-bold">Full Specifications Of ${info.name} </h4>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">ReleaseDate :${info.releaseDate}</li>
-                <h5 class="list-group-item bg-light">MainFeatures :</h5>
+                <li class="list-group-item table-hover">ReleaseDate :${info.releaseDate}</li>
+                <h5 class="list-group-item bg-light table-hover text-success">MainFeatures :</h5>
                 <li class="list-group-item">Storage: ${info.mainFeatures.storage}</li>
                 <li class="list-group-item bg-light">DisplaySize: ${info.mainFeatures.displaySize}</li>
                 <li class="list-group-item">ChipSet: ${info.mainFeatures.chipSet}</li>
                 <li class="list-group-item bg-light">Memory: ${info.mainFeatures.memory}</li>
                 <h5 class="list-group-item fw-bold">Sensors: ${info.mainFeatures.sensors}</h5>         
                 <li class="list-group-item bg-light">Brand: ${info.brand}</li>
-                <h5 class="list-group-item">Other Features:</h5>
-
-                <li class="list-group-item ">Bluetooth: Not Avilable</li>
-                <li class="list-group-item bg-light">GPS: Not Avilable</li>
-                <li class="list-group-item ">NFC: Not Avilable</li>
-                <li class="list-group-item bg-light">Radio: Not Avilable</li>
-                <li class="list-group-item ">USB: Not Avilable</li>
-               
+                <h5 class="list-group-item text-success">Other Features:</h5>
+                <li class="list-group-item ">Bluetooth: Result Not Avilable</li>
+                <li class="list-group-item bg-light">GPS: Result Not Avilable</li>
+                <li class="list-group-item ">NFC: Result Not Avilable</li>
+                <li class="list-group-item bg-light">Radio: Result Not Avilable</li>
+                <li class="list-group-item ">USB: Result Not Avilable</li>
             </ul>
         </div>
     `
@@ -107,14 +104,14 @@ const setDetails = (info) => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ReleaseDate :<h6 class="d-inline"> Comming soon</h6></li>
-                <h5 class="list-group-item bg-light">MainFeatures :</h5>
-                <li class="list-group-item">Storage: ${info.mainFeatures.storage}</li>
-                <li class="list-group-item bg-light">DisplaySize: ${info.mainFeatures.displaySize}</li>
+                <h5 class="list-group-item bg-light text-success">MainFeatures :</h5>
+                <li class="list-group-item table-hover">Storage: ${info.mainFeatures.storage}</li>
+                <li class="list-group-item bg-light table-hover">DisplaySize: ${info.mainFeatures.displaySize}</li>
                 <li class="list-group-item">ChipSet: ${info.mainFeatures.chipSet}</li>
                 <li class="list-group-item bg-light">Memory: ${info.mainFeatures.memory}</li>
                 <h5 class="list-group-item fw-bold">Sensors: ${info.mainFeatures.sensors}</h5>         
                 <li class="list-group-item bg-light">Brand: ${info.brand}</li>
-                <h5 class="list-group-item">Other Features:</h5>
+                <h5 class="list-group-item text-success">Other Features:</h5>
                 <li class="list-group-item ">Bluetooth: ${info.others.Bluetooth}</li>
                 <li class="list-group-item bg-light">GPS: ${info.others.GPS}</li>
                 <li class="list-group-item ">NFC: ${info.others.NFC}</li>
@@ -134,14 +131,14 @@ const setDetails = (info) => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ReleaseDate :${info.releaseDate}</li>
-                <h5 class="list-group-item bg-light">MainFeatures :</h5>
+                <h4 class="list-group-item bg-light text-success fw-bold">MainFeatures :</h4>
                 <li class="list-group-item">Storage: ${info.mainFeatures.storage}</li>
                 <li class="list-group-item bg-light">DisplaySize: ${info.mainFeatures.displaySize}</li>
                 <li class="list-group-item">ChipSet: ${info.mainFeatures.chipSet}</li>
                 <li class="list-group-item bg-light">Memory: ${info.mainFeatures.memory}</li>
                 <h5 class="list-group-item fw-bold">Sensors: ${info.mainFeatures.sensors}</h5>         
                 <li class="list-group-item bg-light">Brand: ${info.brand}</li>
-                <h5 class="list-group-item">Other Features:</h5> 
+                <h4 class="list-group-item text-success fw-bold">Other Features:</h4> 
                 <li class="list-group-item ">Bluetooth: ${info.others.Bluetooth}</li>
                 <li class="list-group-item bg-light">GPS: ${info.others.GPS}</li>
                 <li class="list-group-item ">NFC: ${info.others.NFC}</li>
@@ -151,7 +148,6 @@ const setDetails = (info) => {
         </div>
     `
     }
-    // console.log(info.others)
 }
 
 
