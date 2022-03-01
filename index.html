@@ -18,36 +18,50 @@
         body {
             font-family: 'Poppins', sans-serif;
         }
+
+        .btn-primary {
+            margin-left: 131px;
+            margin-top: -21px;
+        }
     </style>
 </head>
 
-<body class="bg-light">
-    <div class="container">
-        <h2 class="text-center mt-3">Mobile Official Site </h2>
-        <div class="input-group w-50 mb-3 mx-auto">
-            <input id="search-input" type="text" class="form-control" placeholder="Search" aria-label="Search"
-                aria-describedby="basic-addon2" min="0">
-            <div class="input-group-append">
-                <span onclick="loadMobile()" class="input-group-text" id="search-btn">Search</span>
+<body>
+    <div class="bg-info pb-3">
+        <div class="container">
+            <h2 class="text-center mt-3">Mobile Official Store </h2>
+            <div class="input-group w-50 mb-3 mx-auto">
+                <input id="search-input" type="text" class="form-control" placeholder="Search" aria-label="Search"
+                    aria-describedby="basic-addon2" min="0">
+                <div class="input-group-append">
+                    <span onclick="loadMobile()" class="input-group-text" id="search-btn">Search</span>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- details file -->
-    <div class="container">
-        <div class="row" id="details-mobile">
-
+    <!--------------- eror handaling -------------->
+    <div class="bg-light">
+        <div id="eror" class="text-center">
+            <!-- <h4>Sorry this Phone or Tab isn't heild on this.</h4> -->
+            <!-- <h4 id="number-check" class="d-none">Sorry !! Your input is not valid .</h4> -->
         </div>
-    </div>
 
-    <!-- -------container------- -->
-    <div class="container mt-4">
-        <div id="card-parent" class="row">
+        <!-- details file -->
+        <div class="container">
+            <div class="row" id="details-mobile">
 
-
+            </div>
         </div>
-    </div>
 
+        <!-- -------container------- -->
+        <div class="container mt-4">
+            <div id="card-parent" class="row">
+
+
+            </div>
+        </div>
+
+    </div>
     <!-- -----------javascript link--------------- -->
     <script src="app.js"></script>
 </body>

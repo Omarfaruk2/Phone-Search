@@ -1,14 +1,38 @@
 
 const loadMobile = () => {
+    document.getElementById("eror").innerHTML = ''
     document.getElementById("card-parent").innerHTML = ''
     document.getElementById("details-mobile").innerHTML = ''
     const inputValue = document.getElementById("search-input").value
 
-    const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue}`
-    // console.log(url)
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayMobile(data.data))
+    if (inputValue == '') {
+        console.log("hello")
+        document.getElementById("eror").innerHTML = `
+        <h4 class="text-danger">Please write search a Mobile or Tab or a valid input !!!</h4>
+        `
+    }
+    else {
+        const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue}`
+        // console.log(url)
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data.data)
+                if (inputValue.toLowerCase() == 'nova' || inputValue.toLowerCase() == 'samsung'
+                    || inputValue.toLowerCase() == 'iphone' || inputValue.toLowerCase() == 'tab') {
+                    console.log(data.data.length)
+                    displayMobile((data.data).slice(0, 20))
+
+                }
+                else {
+                    document.getElementById("eror").innerHTML = `
+                    <h4 class="text-danger">Please write search a Mobile or Tab or a valid input ami parvo !!!</h4>
+                    `
+                }
+            })
+
+    }
+    // console.log(inputValue)
 }
 
 const displayMobile = (phones) => {
@@ -16,6 +40,7 @@ const displayMobile = (phones) => {
     const parent = document.getElementById("card-parent")
     phones.forEach(phone => {
         // console.log(phone)
+        // console.log(phone.)
         const div = document.createElement("div")
         div.classList.add('mx-auto')
         div.innerHTML = `
@@ -25,7 +50,7 @@ const displayMobile = (phones) => {
                 <div class="card-body w-100">
                     <h6 class="card-title">Mobile: ${phone.phone_name}</h6>
                     <h6 class="card-title">Divice: ${phone.brand}</h6>
-                    <a href="#" onclick="loadDetails('${phone.slug}')" class="btn btn-primary me-auto">Details</a>
+                    <a href="#" onclick="loadDetails('${phone.slug}')" class="btn btn-primary ms-5">Details</a>
                 </div>
             </div>
         </div>
