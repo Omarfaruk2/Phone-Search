@@ -5,42 +5,38 @@ const loadMobile = () => {
     document.getElementById("card-parent").innerHTML = ''
     document.getElementById("details-mobile").innerHTML = ''
     const inputValue = document.getElementById("search-input").value
+    //   ------// ------eror_handle----------
+    if (inputValue === "" || isNaN(inputValue) === false) {
 
-    if (inputValue === '') {
-        // console.log("hello")
         document.getElementById("eror").innerHTML = `
         <h3 class="text-danger mt-4">Please write a Mobile or Tab Name or a valid input for search deatils !!!</h3>
         `
+        document.getElementById("search-input").value = ''
     }
     else {
         const url = `https://openapi.programming-hero.com/api/phones?search=${inputValue}`
-        // console.log(url)
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                // console.log(data.data)
-                if (inputValue.toLowerCase() === 'nova' || inputValue.toLowerCase() === 'huawei' || inputValue.toLowerCase() === 'samsung' || inputValue.toLowerCase() === "galaxy"
-                    || inputValue.toLowerCase() === 'iphone' || inputValue.toLowerCase() === 'tab' || inputValue.toLowerCase() === 'oppo' || inputValue.toLowerCase() === '10' || inputValue.toLowerCase() === 'apple' || inputValue.toLowerCase() === 'watch' || inputValue.toLowerCase() === 'find') {
-
-                    displayMobile((data.data).slice(0, 21))
-                }
-                else {
-                    document.getElementById("eror").innerHTML = `
-                    <h4 class="text-danger mt-4">Sorry sir!!! Your input in invalid.Input a valid name.</h4>
-                    `
-                }
+                displayMobile((data.data).slice(0, 21))
+                document.getElementById("search-input").value = ''
             })
     }
 }
-
 // -------displaly data-------------
 const displayMobile = (phones) => {
-    document.getElementById("search-input").value = '';
-    const parent = document.getElementById("card-parent")
-    phones.forEach(phone => {
-        const div = document.createElement("div")
-        div.classList.add('mx-auto')
-        div.innerHTML = `
+    if (phones.length === 0) {
+        document.getElementById("eror").innerHTML = `
+        <h3 class="text-danger mt-4">Please write a Valid  Mobile or Tab Name. !!!</h3>
+        `
+    }
+    else {
+        document.getElementById("search-input").value = '';
+        const parent = document.getElementById("card-parent")
+        phones.forEach(phone => {
+            const div = document.createElement("div")
+            div.classList.add('mx-auto')
+            div.innerHTML = `
         <div class="col-lg-4">
             <div class="card px-4 pt-3 mb-4 check-border shadow-lg" style="width: 21rem;">
                 <img class="card-img-top w-50 b-0 mx-auto" src="${phone.image}" alt="Card image cap">
@@ -52,13 +48,12 @@ const displayMobile = (phones) => {
             </div>
         </div>
         `
-        parent.appendChild(div)
-    });
+            parent.appendChild(div)
+        });
+    }
 }
 //--------------------- --------search by name-----------------------------------------
 const loadDetails = (id) => {
-    // console.log(id)
-    // console.log(id)
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
     fetch(url)
         .then(res => res.json())
