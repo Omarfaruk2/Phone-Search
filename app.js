@@ -84,11 +84,12 @@ const setDetails = (info) => {
                 <h6 class="list-group-item fw-bold">Sensors: ${info.mainFeatures.sensors}</h6>         
                 <li class="list-group-item bg-light">Brand: ${info.brand}</li>
                 <h5 class="list-group-item text-success">Other Features:</h5>
-                <li class="list-group-item ">Bluetooth: ${info?.others?.NFC ?? "Result Not Avilable"}</li>
-                <li class="list-group-item bg-light">GPS: ${info?.others?.NFC ?? "Result Not Avilable"}</li>
+                <li class="list-group-item ">Bluetooth: ${info?.others?.Bluetooth ?? "Result Not Avilable"}</li>
+                <li class="list-group-item bg-light">GPS: ${info?.others?.GPS ?? "Result Not Avilable"}</li>
                 <li class="list-group-item ">NFC: ${info?.others?.NFC ?? "Result Not Avilable"}</li>
-                <li class="list-group-item bg-light">Radio: ${info?.others?.NFC ?? "Result Not Avilable"}</li>
-                <li class="list-group-item ">USB: ${info?.others?.NFC ?? "Result Not Avilable"}</li>
+                <li class="list-group-item bg-light">Radio: ${info?.others?.Radio ?? "Result Not Avilable"}</li>
+                <li class="list-group-item ">USB: ${info?.others?.USB ?? "Result Not Avilable"}</li>
+                <li class="list-group-item ">WLAN: ${info?.others?.WLAN ?? "Result Not Avilable"}</li>
             </ul>
         </div>
     `
